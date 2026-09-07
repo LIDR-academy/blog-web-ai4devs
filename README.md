@@ -24,13 +24,36 @@ y la carpeta no, así que **el `git clone` lleva siempre la carpeta destino escr
 git clone git@github.com:<tu-usuario>/blog-web-ai4devs.git blog-web
 ```
 
+> 🚨 **En el formulario del fork, DESMARCA la casilla que dice copiar solo la rama por
+> defecto.** Viene marcada, y si la dejas así tu fork se lleva únicamente `main`. La rama de
+> partida se trae del repositorio del curso, que es inmune a eso:
+>
+> ```bash
+> cd blog-web
+> git remote add upstream git@github.com:LIDR-academy/blog-web-ai4devs.git
+> git fetch upstream
+> git checkout -b s7/start upstream/s7/start
+> ```
+
 ## Cómo se levanta
 
 ```bash
-npm install
-cp .env.example .env     # ajusta VITE_API_URL si blog-api no está en el puerto por defecto
-npm run dev              # http://localhost:5402
+make setup    # solo la primera vez: instala las dependencias y crea el .env
+make up       # arranca la interfaz en http://localhost:5402
 ```
+
+Antes de tocar nada, `make setup` comprueba que la carpeta se llama `blog-web` y que tu Node
+es 20 o superior. Los tres repositorios traen los mismos atajos: `make check`, `make setup` y
+`make up`, más `make ayuda` para ver la lista.
+
+<details>
+<summary>Qué hace <code>make setup</code> por dentro, si prefieres ir a mano</summary>
+
+```bash
+npm ci                   # instala exactamente lo que fija package-lock.json, sin reescribirlo
+cp .env.example .env     # ajusta VITE_API_URL si blog-api no está en el puerto por defecto
+```
+</details>
 
 Necesita **blog-api levantado** para tener algo que pintar. Y para que la búsqueda devuelva
 resultados hace falta además `blog-ai` levantado y el índice lleno: el orden de arranque
