@@ -18,22 +18,23 @@ blog-web  :5402  ──HTTP──▶  blog-api  :3402  ──HTTP──▶  blog
 
 Los tres repositorios viven como **carpetas hermanas** llamadas exactamente `blog-api`,
 `blog-web` y `blog-ai` dentro de una carpeta común. El repositorio se llama `blog-web-ai4devs`
-y la carpeta no, así que **el `git clone` lleva siempre la carpeta destino escrita al final**:
+y la carpeta no, así que **el `git clone` lleva siempre la carpeta destino escrita al final**.
+
+Forkéalo y clónalo **desde tu fork**: sobre un clon directo del repositorio del curso no
+tienes permiso de escritura, y el ejercicio se entrega por pull request. Es **el último de los tres**, porque necesita los otros dos levantados.
+
+> 🚨 **En el formulario del fork, DESMARCA la casilla que dice copiar solo la rama por
+> defecto.** Viene marcada, y si la dejas así tu fork se lleva únicamente `main`. Da igual
+> cómo la dejaras: las dos líneas de `upstream` traen la rama de partida del repositorio del
+> curso, así que funcionan en los dos casos.
 
 ```bash
 git clone git@github.com:<tu-usuario>/blog-web-ai4devs.git blog-web
+cd blog-web
+git remote add upstream git@github.com:LIDR-academy/blog-web-ai4devs.git
+git fetch upstream
+git checkout -b s7/start upstream/s7/start
 ```
-
-> 🚨 **En el formulario del fork, DESMARCA la casilla que dice copiar solo la rama por
-> defecto.** Viene marcada, y si la dejas así tu fork se lleva únicamente `main`. La rama de
-> partida se trae del repositorio del curso, que es inmune a eso:
->
-> ```bash
-> cd blog-web
-> git remote add upstream git@github.com:LIDR-academy/blog-web-ai4devs.git
-> git fetch upstream
-> git checkout -b s7/start upstream/s7/start
-> ```
 
 ## Cómo se levanta
 
